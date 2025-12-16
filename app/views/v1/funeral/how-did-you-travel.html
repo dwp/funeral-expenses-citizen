@@ -1,0 +1,92 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  How did you travel – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/transporttype-answer-v1" method="post">
+
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+          {% if (data['travelexpenses'] == "arrange-funeral") %}
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">How did you travel to arrange the funeral?</h1>
+          </legend>
+
+          {% else %}
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">How did you travel to go to the funeral?</h1>
+          </legend>
+
+          {% endif %}
+
+        {% set otherHtml %}
+          {{ govukInput({
+          id: "other-travel",
+          name: "other-travel",
+          type: "other-travel",
+          spellcheck: false,
+          classes: "govuk-input--width-20",
+          label: {
+            text: "Enter how you travelled"
+          }
+          }) }}
+        {% endset -%}
+
+        {{ govukCheckboxes({
+          name: "transporttype",
+          values: data["transporttype"],
+          hint: {
+            text: "Select all that apply."
+          },
+          items: [
+            {
+              value: "train",
+              text: "Train"
+            },
+            {
+              value: "bus",
+              text: "Bus"
+            },
+            {
+              value: "taxi",
+              text: "Taxi"
+            },
+            {
+              value: "car",
+              text: "Car"
+            },
+            {
+              value: "other",
+              text: "Other",
+              conditional: {
+                html: otherHtml
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
