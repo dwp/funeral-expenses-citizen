@@ -1,15 +1,5 @@
 module.exports = function (router) {
 
-// GENERIC NEXT PAGE ELEMENT
-router.post('*', function (req, res, next) {
-    console.log(req.body);
-    if (req.body['next-page']) {
-      res.redirect(req.body['next-page']);
-    } else {
-      next();
-    }
-  });
-
 // ARE YOU THE PARTNER
 
 router.post('/partner-answer-v1', function(request, response) {
