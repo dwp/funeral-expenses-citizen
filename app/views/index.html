@@ -1,4 +1,5 @@
 {% extends "layouts/main.html" %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
 
 {% set pageName="Home" %}
 
@@ -7,13 +8,67 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
-
     <h1 class="govuk-heading-xl">
-      {{ serviceName }}
+      Citizen prototypes
     </h1>
 
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
+
+    <span class="govuk-caption-m">Alpha</span>
+    <h2 class="govuk-heading-m">
+      Hypothesis 1
+    </h1>
+    
+    <dl class="govuk-summary-list govuk-summary-list--no-border">
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Status
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <strong class="govuk-tag govuk-tag--light-blue">In progress</strong>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Sprint 1: 26/11/25 to 09/12/25
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Goal
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Mirror agent telephony form into an citizen facing online form to test
+        </dd>
+      </div>
+    </dl>
+
+    <button onclick="javascript:location.href='/v1/gov/before-you-start'" class="govuk-button" data-module="govuk-button">
+      Start
+    </button>
+
+    {% set links %}
+      <ol class="govuk-list govuk-list--number">
+        <li><a href="/v1/gov/make-a-claim">/make-a-claim</li>
+        <li><a href="/v1/eligibility/start">/eligibility</li>
+        <li><a href="/v1/details/about-the-claimant">/claim-details</a></li>
+        <li><a href="/v1/money/start">/money-available</a></li>
+        <li><a href="/v1/funeral/start">/funeral-details</a></li>
+        <li><a href="/v1/contact/start">/bank-and-contact-information</a></li>
+      </ol>
+    {% endset %}
+
+    {{ govukDetails({
+        summaryText: "Quick links",
+        html: links
+    }) }}
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
+
   </div>
 </div>
 

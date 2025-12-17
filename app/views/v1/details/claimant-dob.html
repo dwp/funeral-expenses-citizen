@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is your date of birth? {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/v1/details/claimant-nino" method="post">
+
+        {{ govukDateInput({
+          id: "dob-claimant",
+          fieldset: {
+            legend: {
+              text: "What is your date of birth?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "For example, 27 3 1948."
+          },
+          items: [
+            {
+              classes: 'govuk-input--width-2',
+              name: 'day',
+              id: 'dob-day-claimant'
+            },
+            {
+              classes: 'govuk-input--width-2',
+              name: 'month',
+              id: 'dob-month-claimant'
+            },
+            {
+              classes: 'govuk-input--width-4',
+              name: 'year',
+              id: 'dob-year-claimant'
+            }
+          ]
+        }) }}
+        
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

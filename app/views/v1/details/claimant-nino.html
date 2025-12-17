@@ -1,0 +1,46 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is your National Insurance number? {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/v1/details/about-the-deceased" method="post">
+
+        {{ govukInput({
+          label: {
+            text: "What is your National Insurance number?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "It is on your National Insurance card, pension statement, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C'."
+          },
+          id: "nino-claimant",
+          name: "nino-claimant",
+          classes: "govuk-input--width-10 govuk-input--extra-letter-spacing",
+          spellcheck: false,
+          value: data["nino-claimant"]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
