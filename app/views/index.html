@@ -9,8 +9,60 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-xl">
-      Citizen prototypes
+      Citizen prototype
     </h1>
+
+    <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
+
+    <span class="govuk-caption-m">Alpha</span>
+    <h2 class="govuk-heading-m">
+      Hypothesis 3
+    </h1>
+    
+    <dl class="govuk-summary-list govuk-summary-list--no-border">
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Status
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <strong class="govuk-tag govuk-tag--light-blue">
+            In progress
+          </strong>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Sprint: [enter dates of testing]
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Goal
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Design a journey that prepares a bereaved person with what they need to apply.
+        </dd>
+      </div>
+    </dl>
+
+    <button onclick="javascript:location.href='/v2/eligibility/start'" class="govuk-button" data-module="govuk-button">
+      Start
+    </button>
+
+    {% set links %}
+    <ol class="govuk-list govuk-list--number">
+      <li><a href="/v2/eligibility/triage-a">/check-what-you-need-to-apply</li>
+    </ol>
+  {% endset %}
+
+  {{ govukDetails({
+      summaryText: "Quick links",
+      html: links
+  }) }}
 
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
 
@@ -26,7 +78,9 @@
           Status
         </dt>
         <dd class="govuk-summary-list__value">
-          <strong class="govuk-tag govuk-tag--light-blue">In progress</strong>
+          <strong class="govuk-tag">
+            Completed
+          </strong>
         </dd>
       </div>
       <div class="govuk-summary-list__row">

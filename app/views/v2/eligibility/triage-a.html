@@ -1,0 +1,149 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check what you need to apply – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Get help with funeral costs",
+        href: "#"
+      },
+      {
+        text: "Check what you need to apply"
+      }
+    ]
+  }) }}
+
+  {% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/v2/eligibility/triage-a-answer" method="post">
+
+        <h1 class="govuk-heading-l">Check what you need to apply for a Funeral Expenses Payment</h1>
+
+        <p class="govuk-body">Select one option for each question.</p>
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  classes: "govuk-radios--small",
+  name: "relationship-radio",
+  fieldset: {
+    legend: {
+      text: "What's your relationship to the person who died?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: "partner",
+      text: "I'm their partner"
+    },
+    {
+      value: "child",
+      text: "I'm their child"
+    },
+    {
+      value: "parent",
+      text: "I'm their parent"
+    },
+    {
+      value: "relative",
+      text: "I'm another relative or friend"
+    }
+  ]
+}) }}
+
+{{ govukRadios({
+  classes: "govuk-radios--small",
+  name: "finance-radio",
+  fieldset: {
+    legend: {
+      text: "Who is responible for the financial affairs of the person who died?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: "responsible",
+      text: "I'm responsible"
+    },
+    {
+      value: "not-responsible",
+      text: "Someone else is responsible"
+    }
+  ]
+}) }}
+
+<!-- {{ govukRadios({
+  classes: "govuk-radios--small",
+  name: "when-funeral-radio",
+  fieldset: {
+    legend: {
+      text: "When is the funeral?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: "funeral-taken-place",
+      text: "The funeral has already taken place"
+    },
+    {
+      value: "funeral-not-yet",
+      text: "The funeral hasn't taken place yet"
+    }
+  ]
+}) }} -->
+
+{{ govukRadios({
+  classes: "govuk-radios--small",
+  name: "arranging-radio",
+  fieldset: {
+    legend: {
+      text: "Who is arranging the funeral?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: "funeral-director",
+      text: "I'm using a funeral director"
+    },
+    {
+      value: "organisation",
+      text: "I'm using an organisation or someone from the community"
+    },
+    {
+      value: "myself",
+      text: "I'm arranging the funeral myself"
+    }
+  ]
+}) }}
+      
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
