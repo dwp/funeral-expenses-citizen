@@ -1,0 +1,129 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What you need to apply for a Funeral Expenses Payment – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+       What you need to apply for a Funeral Expenses Payment
+      </h1>
+
+      <form class="form" action="/v2b/eligibility/over-20" method="post">
+
+        {# <p class="govuk-body">
+          You'll need:
+        </p> #}
+
+        <h2 class="govuk-heading-s">
+          Your details
+        </h2>
+
+        <ul class="govuk-list govuk-list--bullet">
+
+          <li>your National Insurance number</li>
+          <li>your address and contact details</li>
+          <li>your bank or building society details</li>
+          
+        </ul>
+
+        <h2 class="govuk-heading-s">
+          About the person who died
+        </h2>
+
+        <ul class="govuk-list govuk-list--bullet">
+
+          {% if (data['relationship-radio'] == "partner") %}
+          <li>your partner’s National Insurance number</li>
+          <li>the date your partner died </li>
+          {% endif %}
+
+          {% if (data['relationship-radio'] == "child") %}
+          <li>your parent's National Insurance number</li>
+          <li>the date your parent died</li>
+          {% endif %}
+
+          {% if (data['relationship-radio'] == "parent") %}
+          <li>your child's National Insurance number (if they have one)</li>
+          <li>the date your child died</li>
+          {% endif %}
+
+          {% if (data['relationship-radio'] == "relative") %}
+          <li>your relative or friend's National Insurance number</li>
+          <li>the date your relative or friend died</li>
+          {% endif %}
+
+          {% if (data['relationship-radio'] == "child" or data['relationship-radio'] == "parent") %}
+          <li>details of any other surviving children or parents of the person who died</li>
+          {% endif %}
+
+        </ul>
+
+        <h2 class="govuk-heading-s">
+          Funeral details
+        </h2>
+
+        <ul class="govuk-list govuk-list--bullet">
+
+          {% if (data['arranging-radio'] == "funeral-director") %}
+          <li>name and address of funeral director</li>
+          {% endif %}
+
+          {% if (data['arranging-radio'] == "organisation") %}
+          <li>name and address of the organisation or person from the community arranging the funeral</li>
+          {% endif %}
+
+          {% if (data['arranging-radio'] == "myself") %}
+          <li>date of the funeral</li>
+          {% endif %}
+
+        </ul>
+
+        <h2 class="govuk-heading-s">
+          About the estate
+        </h2>
+
+        {% if (data['finance-radio'] == "responsible") %}
+        <p class="govuk-body">
+          We'll ask you for details about the estate of the person who died, such as:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+
+          <li>who is taking responsibility for their financial affairs</li>
+          <li>what money that had</li>
+          <li>any life insurance policies, pensions or funeral plans</li>
+
+        </ul>
+        {% endif %}
+
+        {% if (data['finance-radio'] == "not-responsible") %}
+        <ul class="govuk-list govuk-list--bullet">
+          <li>contact details of the person dealing with the financial affairs of the person who died</li>
+        </ul>
+        {% endif %}
+
+        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
+
+        <h2 class="govuk-heading-m">How to claim</h2>
+       
+        <p><a href="" class="govuk-link">Get help with funeral costs</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

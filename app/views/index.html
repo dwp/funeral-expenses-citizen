@@ -50,23 +50,27 @@
     </dl>
 
     <button onclick="javascript:location.href='/v2a/gov/make-a-claim'" class="govuk-button" data-module="govuk-button">
-      Test A
+      Test A - static
     </button>
 
     <button onclick="javascript:location.href='/v2b/gov/make-a-claim'" class="govuk-button" data-module="govuk-button">
-      Test B
+      Test B - dynamic
     </button>
 
-    {% set links %}
+    <button onclick="javascript:location.href='/v2a/eligibility/relationship'" class="govuk-button" data-module="govuk-button">
+      Application
+    </button>
+
+    {# {% set links %}
       <ol class="govuk-list govuk-list--number">
-        <li><a href="/v2a/eligibility/triage-a">/check-what-you-need-to-apply</a></li>
+        <li><a href="/v2a/gov/checker">/check-what-you-need-to-apply</a></li>
       </ol>
     {% endset %}
 
     {{ govukDetails({
         summaryText: "Quick links",
         html: links
-    }) }}
+    }) }} #}
 
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
 
