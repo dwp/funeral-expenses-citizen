@@ -1,0 +1,92 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/v2a/money/financial-affairs" method="post">
+
+        {% if (data['funeraltakenplace'] == "yes") %}
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukRadios({
+            name: "arrangingfuneral",
+            values: data["arrangingfuneral"],
+            fieldset: {
+              legend: {
+                text: "Who arranged the funeral?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "director",
+                text: "Funeral director"
+              },
+              {
+                value: "organisation",
+                text: "Organisation or someone from the community"
+              },
+              {
+                value: "myself",
+                text: "I arranged the funeral myself"
+              }
+            ]
+          }) }}
+
+        {% else %}
+     
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukRadios({
+            name: "arrangingfuneral",
+            values: data["arrangingfuneral"],
+            fieldset: {
+              legend: {
+                text: "Who is arranging the funeral?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "director",
+                text: "Funeral director"
+              },
+              {
+                value: "organisation",
+                text: "Organisation or someone from the community"
+              },
+              {
+                value: "myself",
+                text: "I'm arranging the funeral myself"
+              }
+            ]
+          }) }}
+
+          {% endif %}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

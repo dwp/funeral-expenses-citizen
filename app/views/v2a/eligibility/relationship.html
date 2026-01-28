@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Are you the partner – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/v2a/eligibility/funeral-taken-place" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "relationshiptodeceased",
+          values: data["relationshiptodeceased"],
+          fieldset: {
+            legend: {
+              text: "What is your relationship to the person who died?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "partner",
+              text: "I'm their partner"
+            },
+            {
+              value: "childofdeceased",
+              text: "I'm their child"
+            },
+            {
+              value: "parentofdeceased",
+              text: "I'm their parent"
+            },
+            {
+              value: "crofdeceased",
+              text: "I'm another relative or friend"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

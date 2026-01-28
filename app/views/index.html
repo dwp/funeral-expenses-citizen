@@ -17,7 +17,7 @@
     <span class="govuk-caption-m">Alpha</span>
     <h2 class="govuk-heading-m">
       Hypothesis 3
-    </h1>
+    </h2>
     
     <dl class="govuk-summary-list govuk-summary-list--no-border">
 
@@ -36,7 +36,7 @@
           Date
         </dt>
         <dd class="govuk-summary-list__value">
-          Sprint: [enter dates of testing]
+          Sprint 2: 22/01/26 to 04/02/26
         </dd>
       </div>
       <div class="govuk-summary-list__row">
@@ -49,27 +49,31 @@
       </div>
     </dl>
 
-    <button onclick="javascript:location.href='/v2/eligibility/start'" class="govuk-button" data-module="govuk-button">
-      Start
+    <button onclick="javascript:location.href='/v2a/gov/make-a-claim'" class="govuk-button" data-module="govuk-button">
+      Test A
+    </button>
+
+    <button onclick="javascript:location.href='/v2b/gov/make-a-claim'" class="govuk-button" data-module="govuk-button">
+      Test B
     </button>
 
     {% set links %}
-    <ol class="govuk-list govuk-list--number">
-      <li><a href="/v2/eligibility/triage-a">/check-what-you-need-to-apply</li>
-    </ol>
-  {% endset %}
+      <ol class="govuk-list govuk-list--number">
+        <li><a href="/v2a/eligibility/triage-a">/check-what-you-need-to-apply</a></li>
+      </ol>
+    {% endset %}
 
-  {{ govukDetails({
-      summaryText: "Quick links",
-      html: links
-  }) }}
+    {{ govukDetails({
+        summaryText: "Quick links",
+        html: links
+    }) }}
 
     <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
 
     <span class="govuk-caption-m">Alpha</span>
     <h2 class="govuk-heading-m">
       Hypothesis 1
-    </h1>
+    </h2>
     
     <dl class="govuk-summary-list govuk-summary-list--no-border">
 
@@ -78,7 +82,7 @@
           Status
         </dt>
         <dd class="govuk-summary-list__value">
-          <strong class="govuk-tag">
+          <strong class="govuk-tag govuk-tag--green">
             Completed
           </strong>
         </dd>
