@@ -1,11 +1,15 @@
-{% extends "layouts/main.html" %}
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+
+{% block header %}
+    {{ govukHeader() }}
+{% endblock %}
 
 {% block pageTitle %}
   Check what you need to apply – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
-
   {{ govukBreadcrumbs({
     items: [
       {
@@ -14,15 +18,14 @@
       },
       {
         text: "Get help with funeral costs",
-        href: "#"
+        href: "/v2b/gov/how-to-claim"
       },
       {
         text: "Check what you need to apply"
       }
     ]
   }) }}
-
-  {% endblock %}
+{% endblock %}
 
 {% block content %}
 
