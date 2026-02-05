@@ -20,24 +20,40 @@
  
     <form class="form" action="/v2a/ifm/child/about-a-child" method="post">
 
-   {% else %}
+    <h1 class="govuk-heading-l">
+        We're now going to ask more details about any surviving adult children 
+    </h1>
+
+    <p class="govuk-body">For each child we’ll ask:</p>
+
+    {% elif (data['ifm'] == "parent")%}
 
     <form class="form" action="/v2a/ifm/parent/about-a-parent" method="post"> 
 
-   {% endif %}  
+    <h1 class="govuk-heading-l">
+        We're now going to ask more details about any surviving parents 
+    </h1>
 
-      <h1 class="govuk-heading-l">
-        We're now going to ask more details about any surviving adult children or parents 
-      </h1>
+    <p class="govuk-body">For each parent we’ll ask:</p>
 
-        <p class="govuk-body">For each relative we’ll ask:</p>
+
+    {% else %}
+
+    <form class="form" action="/v2a/ifm/parent/about-a-parent" method="post"> 
+
+    <h1 class="govuk-heading-l">
+      We're now going to ask more details about any surviving adult children or parents 
+    </h1>
+
+    <p class="govuk-body">For each relative we’ll ask:</p>
+
+   {% endif %}
+
         <ul class="govuk-list govuk-list--bullet">
           <li>their name</li>
           <li>if they get any benefits</li>
           <li>about their relationship to the person who died</li>
         </ul>
-       
-       {# <p class="govuk-body">This is to check there is nobody else who can pay for the funeral.</p> #}
 
         {{ govukButton({
           text: "Continue"

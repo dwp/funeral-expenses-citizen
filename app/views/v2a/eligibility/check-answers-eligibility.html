@@ -51,23 +51,23 @@
                 <div class="govuk-summary-list__row">
                   {% if (data['funeraltakenplace'] == "yes") %}
                   <dt class="govuk-summary-list__key">
-                    Who arranged the funeral
+                    How was the funeral arranged
                   </dt>
                   <dd class="govuk-summary-list__value">
                     {{ data['arrangingfuneral']
-                    | replace("director", "Funeral director")
-                    | replace("organisation", "Organisation or someone from the community")
+                    | replace("director", "I used a funeral director")
+                    | replace("organisation", "An organisation or someone from the community")
                     | replace("myself", "I arranged the funeral myself")
                     }}
                   </dd>
                   {% else %}
                   <dt class="govuk-summary-list__key">
-                    Who is arranging the funeral
+                    How will the funeral be arranged
                   </dt>
                   <dd class="govuk-summary-list__value">
                     {{ data['arrangingfuneral']
-                    | replace("director", "Funeral director")
-                    | replace("organisation", "Organisation or someone from the community")
+                    | replace("director", "I'm using a funeral director")
+                    | replace("organisation", "An organisation or someone from the community")
                     | replace("myself", "I'm arranging the funeral myself")
                     }}
                   </dd>
@@ -83,7 +83,7 @@
                   </dt>
                   <dd class="govuk-summary-list__value">
                     {{ data['financialaffairs']
-                    | replace("you", "Me")
+                    | replace("you", "I am")
                     | replace("solicitor", "A solicitor")
                     | replace("someone-else", "Someone else")
                     }}

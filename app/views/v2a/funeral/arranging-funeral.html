@@ -27,7 +27,7 @@
             values: data["arrangingfuneral"],
             fieldset: {
               legend: {
-                text: "Who arranged the funeral?",
+                text: "How was the funeral arranged?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
               }
@@ -35,15 +35,21 @@
             items: [
               {
                 value: "director",
-                text: "Funeral director"
+                text: "I used a funeral director"
               },
               {
                 value: "organisation",
-                text: "Organisation or someone from the community"
+                text: "An organisation or someone from the community",
+                hint: {
+                  text: "For example someone from a place of worship"
+                }
               },
               {
                 value: "myself",
-                text: "I arranged the funeral myself"
+                text: "I arranged the funeral myself",
+                hint: {
+                  text: "Without help from a funeral director, organisation or someone from the community"
+                }
               }
             ]
           }) }}
@@ -57,7 +63,7 @@
             values: data["arrangingfuneral"],
             fieldset: {
               legend: {
-                text: "Who is arranging the funeral?",
+                text: "How will the funeral be arranged?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
               }
@@ -65,15 +71,21 @@
             items: [
               {
                 value: "director",
-                text: "Funeral director"
+                text: "I'm using a funeral director"
               },
               {
                 value: "organisation",
-                text: "Organisation or someone from the community"
+                text: "An organisation or someone from the community",
+                hint: {
+                  text: "For example someone from a place of worship"
+                }
               },
               {
                 value: "myself",
-                text: "I'm arranging the funeral myself"
+                text: "I'm arranging the funeral myself",
+                hint: {
+                  text: "Without help from a funeral director, organisation or someone from the community"
+                }
               }
             ]
           }) }}
