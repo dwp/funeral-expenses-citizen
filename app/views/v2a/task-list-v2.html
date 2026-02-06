@@ -1,0 +1,160 @@
+{% extends "layouts/main.html" %}
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+
+{% block pageTitle %}
+  Start claim – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Apply for Funeral Expenses Payment
+      </h1>
+
+      <p class="govuk-body">
+        Intro?
+      </p>
+      
+
+      <h2 class="govuk-heading-m">
+        1. Stage one
+      </h2>
+
+      {{ govukTaskList({
+        idPrefix: "fep-application",
+        items: [
+          {
+            title: {
+              text: "Eligibility"
+            },
+            href: "/v2a/eligibility/start",
+            status: {
+              tag: {
+                text: "Not started",
+                classes: "govuk-tag--grey"
+              }
+            }
+          },
+          {
+            title: {
+              text: "About you"
+            },
+            href: "/v2a/details/about-the-claimant",
+            status: {
+              tag: {
+                text: "Not started",
+                classes: "govuk-tag--grey"
+              }
+            }
+          },
+          {
+            title: {
+              text: "About the person who died"
+            },
+            href: "/v2a/details/about-the-deceased",
+            status: {
+              tag: {
+                text: "Not started",
+                classes: "govuk-tag--grey"
+              }
+            }
+          },
+          {
+            title: {
+              text: "Your bank details"
+            },
+            href: "/v2a/contact/bank-details",
+            status: {
+              tag: {
+                text: "Not started",
+                classes: "govuk-tag--grey"
+              }
+            }
+          },
+          {
+            title: {
+              text: "Your contact details"
+            },
+            href: "/v2a/contact/phone",
+            status: {
+              tag: {
+                text: "Not started",
+                classes: "govuk-tag--grey"
+              }
+            }
+          }
+        ]
+      }) }}
+
+
+      <h2 class="govuk-heading-m govuk-!-padding-top-5">
+        2. Stage two
+      </h2>
+
+      {{ govukTaskList({
+        idPrefix: "fep-application",
+        items: [
+          {
+            title: {
+              text: "About any money left by the person who died"
+            },
+            href: "/v2a/money/start",
+            status: {
+              tag: {
+                text: "Not started",
+                classes: "govuk-tag--grey"
+              }
+            }
+          },
+          {
+            title: {
+              text: "About the funeral"
+            },
+            href: "/v2a/funeral/start",
+            status: {
+              tag: {
+                text: "Not started",
+                classes: "govuk-tag--grey"
+              }
+            }
+          }
+        ]
+      }) }}
+
+
+      <h2 class="govuk-heading-m govuk-!-padding-top-5">
+        3. Stage three
+      </h2>
+
+      {{ govukTaskList({
+        idPrefix: "fep-application",
+        items: [
+          {
+            title: {
+              text: "Submit your application"
+            },
+            
+            status: {
+              tag: {
+                text: "Do this last",
+                classes: "govuk-tag--grey"
+              }
+            }
+          }
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
