@@ -63,6 +63,18 @@ router.post('/whereyoulive-answer-v2a', function(request, response) {
     }
 })
 
+  // FUNERAL DATE
+
+  router.post('/funeradate-answer-v2a', function(request, response) {
+
+    var funeraldatequestion = request.session.data['funeral-date-question']
+    if (funeraldatequestion == "yes"){
+        response.redirect("/v2a/eligibility/over-6-months-ago")
+    } else {
+        response.redirect("/v2a/eligibility/funeral-in-uk")
+    }
+})
+
   // FUNERAL IN UK
 
   router.post('/funeralinuk-answer-v2a', function(request, response) {

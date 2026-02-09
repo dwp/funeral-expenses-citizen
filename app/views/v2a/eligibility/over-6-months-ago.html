@@ -23,12 +23,39 @@
       </h1>
 
       <p>
-        If the funeral was on <b>6 October 2023</b> it has been over 6 months. This means you cannot get a Funeral Expenses Payment.
+        If the funeral was on 
+        <b>
+          {{ data['funeral-day'] }} 
+          {{ data['funeral-month']
+          | replace("11", "November")
+          | replace("12", "December")
+          | replace("01", "January")
+          | replace("02", "February")
+          | replace("03", "March")
+          | replace("04", "April")
+          | replace("05", "May")
+          | replace("06", "June")
+          | replace("07", "July")
+          | replace("08", "August")
+          | replace("09", "September")
+          | replace("10", "October")
+          | replace("1", "January")
+          | replace("2", "February")
+          | replace("3", "March")
+          | replace("4", "April")
+          | replace("5", "May")
+          | replace("6", "June")
+          | replace("7", "July")
+          | replace("8", "August")
+          | replace("9", "September") }}
+          {{ data['funeral-year'] }}
+        </b> 
+        it has been over 6 months. This means you cannot get a Funeral Expenses Payment.
       </p>
 
-      <p class="govuk-body">
+      {# <p class="govuk-body">
         <a href="/index" class="govuk-link govuk-link--no-visited-state">Clear data and start again</a>
-      </p>
+      </p> #}
 
       <br>
 
