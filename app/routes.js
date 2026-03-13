@@ -13,3 +13,5 @@ require('./routes/v1.js')(router);
 require('./routes/v2a.js')(router);
 
 require('./routes/v2b.js')(router);
+
+require('./routes/v3.js')(router);

@@ -1,0 +1,78 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Before you start – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/v3/eligibility/start" method="post">
+
+        <h1 class="govuk-heading-l">
+          Apply for Funeral Expenses Payment
+        </h1>
+
+        <p class="govuk-body">
+          It takes about 25 minutes to apply.
+        </p>
+
+        <p class="govuk-body">
+          Once you've started your application, you can save it and complete it later. 
+        </p>
+
+        <p class="govuk-body">
+          You'll need:
+        </p>
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>your National Insurance number</li>
+            <li>the National Insurance number of the person who died</li>
+            <li>details of any other surviving children or parents of the person who died</li>
+            <li>the date of death</li>
+            <li>details of the funeral</li>
+            <li>name and address of funeral director, if you're using one</li>
+            <li>details of the estate of the person who died, for example money in bank accounts or life insurance policies</li>
+            <li>your address and contact details</li>
+            <li>your bank or building society details</li>
+          </ul>
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-padding-top-4">
+          <h2 class="govuk-fieldset__heading">Do you have everything you need to apply?</h2>
+        </legend>
+
+        {{ govukRadios({
+            name: "before-you-start",
+            values: data["before-you-start"],
+
+            items: [
+              {
+                value: "yes",
+                text: "Yes"
+              },
+              {
+                value: "no",
+                text: "No"
+              }
+            ]
+          }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+      
+    </div>
+  </div>
+
+{% endblock %}

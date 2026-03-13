@@ -1,0 +1,73 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  You need to start a new application – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Application not found
+      </h1>
+      
+      <p class="govuk-body">
+        This may be because your:
+      </p>
+      
+      <ul class="govuk-list govuk-list--bullet">
+        <li>reference was entered incorrectly</li>
+        <li>reference has expired</li>
+        <li>application has already been submitted</li>
+      </ul>
+      
+      <p class="govuk-body">
+        You can <a href="/v3/eligibility/start">start a new application</a> or call us.
+      </p>
+
+            <h2 class="govuk-heading-m govuk-!-margin-top-9">
+        Get help with your application
+      </h2>
+
+    <p class="govuk-body">
+      Telephone: 0800 731 0468
+      <br/> Welsh language: 0800 731 0453
+    </p>
+
+    <p class="govuk-body">
+      Textphone: 0800 731 0317
+      <br/> Welsh language: 0800 731 0456
+    </p>
+
+    <p class="govuk-body">
+      If you cannot hear or speak on the phone use<br>
+      <a href='https://www.relayuk.bt.com' class="govuk-link">
+        Relay UK (opens in new tab)</a>: 18001 then 0800 731 0469
+    </p>
+
+    <p class="govuk-body">
+      Monday to Friday, 9:30am to 3:30pm
+    </p>
+
+    <p class="govuk-body">
+      <a href='https://www.gov.uk/call-charges' class="govuk-link">
+        Find out about call charges (opens in new tab)
+      </a>
+    </p>
+
+    </div>
+  </div>
+
+    </div>
+  </div>
+
+{% endblock %}

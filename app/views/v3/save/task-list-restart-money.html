@@ -1,0 +1,80 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  You cannot view your answers – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data.restartmoney == "no" %}
+        <form class="form" action="v3/save/task-list" method="post">
+      {% else %}
+        <form class="form" action="/v3/money/financial-affairs" method="post">
+      {% endif %}
+
+      {# {% if data.relationshiptodeceased == "partner" and data.restartmoney == "no" %}
+        <form class="form" action="v3/save/task-list-partner" method="post">
+      {% elif data.relationshiptodeceased == "crofdeceased" and data.restartmoney == "no" %}
+        <form class="form" action="/v3/save/task-list-cfm" method="post">
+      {% elif data.relationshiptodeceased == "childofdeceased" or data.relationshiptodeceased == "parentofdeceased" and data.restartmoney == "no" %}
+        <form class="form" action="/v3/save/task-list-ifm" method="post">
+      {% else %}
+        <form class="form" action="/v3/money/financial-affairs" method="post">
+      {% endif %} #}
+      
+          <h1 class="govuk-heading-l">
+            You cannot view your answers
+          </h1>
+          
+          <p class="govuk-body">
+            To ensure we keep your data safe, we cannot show your previous answers.
+          </p>
+          
+          <p class="govuk-body">
+            You can still complete the section again.
+          </p>
+
+          {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukRadios({
+            name: "restartmoney",
+            values: data["restartmoney"],
+            fieldset: {
+              legend: {
+                text: "Do you want to complete the section again?",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Yes"
+              },
+              {
+                value: "no",
+                text: "No"
+              }
+            ]
+          }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

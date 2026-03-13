@@ -1,0 +1,63 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  You cannot get a Funeral Expenses Payment – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if (data['youhavepartner'] == "yes") %}
+
+      <h1 class="govuk-heading-l">
+        You or your partner must get a qualifying benefit to get a Funeral Expenses Payment
+      </h1>
+    
+      {% else %}
+
+      <h1 class="govuk-heading-l">
+        You must be getting a benefit to apply for a Funeral Expenses Payment
+      </h1>
+
+      {% endif %}
+
+
+      <p>
+        You cannot make a claim for Funeral Expenses Payment if you’re not getting, or waiting to hear about, one of the following:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Universal Credit</li>
+        <li>Income Support</li>
+        <li>Income-based Jobseeker’s Allowance</li>
+        <li>Income-related Employment and Support Allowance</li>
+        <li>Pension Credit</li>
+        <li>Housing Benefit</li>
+        <li>Support for Mortgage Interest </li>
+        </ul>
+
+      <h2 class="govuk-heading-m">
+        If you're eligible for a benefit but have not applied yet
+      </h2>
+
+      <p>
+        You'll need to make your claim after you apply for a benefit and within 6 months of the funeral.
+      </p>
+      <p>
+        You can find out what benefits you may be entitled to by going to GOV.UK and searching for 'benefits calculator'.
+      </p>
+      
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+
+{% block pageTitle %}
+  Unbranded page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <p class="govuk-body-l">
+    Apply for a Funeral Expenses Payment.
+  </p>
+
+  <p class="govuk-body-l">
+    Use this reference to return to your application:
+  </p>
+
+  <p class="govuk-body-l">
+    FEJ OIY
+  </p>
+
+  <p class="govuk-body-l">
+    If you need help you call the Bereavement Service helpline.
+  </p>
+
+  <p class="govuk-body-l">
+    If you do not complete and submit your application by {{ "today" | duration(30) | govukDate }}, you will need to start a new application.
+  </p>
+
+  <p class="govuk-body govuk-!-padding-bottom-9"></p>
+
+  {{ govukButton({
+    text: "Back",
+    classes: "govuk-button--secondary",
+    href: "/"
+  }) }}
+
+{% endblock %}

@@ -1,0 +1,269 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers - Funeral details – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <form class="form" action="/v3/save/task-list" method="post">
+      
+      {# {% if data.relationshiptodeceased == "partner" %}
+        <form class="form" action="/v3/save/task-list-partner" method="post">
+      {% elif data.relationshiptodeceased == "crofdeceased" %}
+        <form class="form" action="/v3/save/task-list-cfm" method="post">
+      {% else %}
+        <form class="form" action="/v3/save/task-list-ifm" method="post">
+      {% endif %} #}
+
+        <h1 class="govuk-heading-l">Check the funeral details</h1>
+
+        <p class="govuk-body">
+          Once you save your answers you cannot check them again. You can restart the section if you need to make any changes.
+        </p>
+
+              <h2 class="govuk-heading-m">Arranging the funeral</h2>
+
+              <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+                <div class="govuk-summary-list__row">
+                  {% if (data['funeraltakenplace'] == "yes") %}
+                  <dt class="govuk-summary-list__key">
+                    How was the funeral arranged
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ data['arrangingfuneral']
+                    | replace("director", "I used a funeral director")
+                    | replace("organisation", "An organisation or someone from the community")
+                    | replace("myself", "I arranged the funeral myself")
+                    | replace("unsure", "Don't know")
+                    }}
+                  </dd>
+                  {% else %}
+                  <dt class="govuk-summary-list__key">
+                    How will the funeral be arranged
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ data['arrangingfuneral']
+                    | replace("director", "I'm using a funeral director")
+                    | replace("organisation", "An organisation or someone from the community")
+                    | replace("myself", "I'm arranging the funeral myself")
+                    }}
+                  </dd>
+                  {% endif %}
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                  </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Name of funeral directors
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Duncan and Sons
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Telephone
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    01842295959
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Address
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    1 Kirk Street<br>Manchester<br>M1 3ET
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Can we contact them
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Yes
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence type</span></a>
+                  </dd>
+                </div>
+              </dl>
+
+              <h2 class="govuk-heading-m">Funeral costs</h2>
+
+              <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Document from funeral director
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Signed contract
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Signed contract in your name
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Yes
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Any money paid to funeral director
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    No
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                  </dd>
+                </div>
+                <!-- <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Exact amount paid off funeral bill
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £2000
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Any of the money from person who died
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Yes
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Exact amount from person who died
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    £800
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                  </dd>
+                </div> -->
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Other costs not on funeral bill
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    No
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                  </dd>
+                </div>
+                </dl>
+
+                {% if (data['funeraltakenplace'] == "yes") %}
+
+                <h2 class="govuk-heading-m">Travel costs</h2>
+
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Help pay travel costs
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Yes
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Which journey
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ data['travelexpenses'] 
+                    | replace("arrange-funeral", "To arrange the funeral")
+                    | replace("go-to-funeral", "To go to the funeral")
+                    }}
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Journey cost
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Bus £2.00<br>Taxi £5.60
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                  </dd>
+                </div>
+              </dl>
+
+              {% else %}
+
+              <h2 class="govuk-heading-m">Travel costs</h2>
+
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Help pay travel costs
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    Yes
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                  </dd>
+                </div>
+              </dl>
+              
+              {% endif %}
+
+              {{ govukButton({
+                text: "Save and continue"
+              }) }}
+
+            </div>
+
+      </form>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  You need to start a new application – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You need to start a new application
+      </h1>
+      
+      <p class="govuk-body">
+        You need an application reference to return to a saved application. 
+        If you do not have one, you will need to start a new application.
+      </p>
+      
+      <p class="govuk-body">
+        We can send you your application reference by email or text.
+      </p>
+      
+      <p class="govuk-body">
+        <a href="/v3/eligibility/start">Start a new application</a>.
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

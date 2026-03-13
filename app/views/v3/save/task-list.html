@@ -1,0 +1,346 @@
+
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+
+{% block pageTitle %}
+  Start claim – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+
+    {{ govukHeader() }}
+    {{ govukServiceNavigation({
+        serviceName: serviceName,
+        serviceUrl: "/",
+        navigation: [
+    {
+      href: "/v3/save/sign-out",
+      text: "Sign out"
+    }
+  ]
+    })}}
+
+{% endblock %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Your Funeral Expenses Payment application
+      </h1>
+
+      <p class="govuk-body">
+         You need to complete all sections before you can submit your application for Funeral Expenses Payment. 'Completed' sections have been saved.
+      </p>
+
+      <ul class="govuk-task-list">
+        
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/v3/save/task-list-restart-section" aria-describedby="company-details-1-status">
+              Check if you're eligible
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-1-status">
+            Completed
+          </div>
+        </li>
+        
+        {% if data['fullnameclaimant'] or data['nationalinsurancenumber-claimant'] %}
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/v3/save/task-list-restart-section" aria-describedby="company-details-2-status">
+              About you
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-1-status">
+            Completed
+          </div>
+        </li>
+        {% else %}
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/v3/details/claimant-name" aria-describedby="company-details-2-status">
+              About you
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-2-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              To do
+            </strong>
+          </div>
+        </li>
+        {% endif %}
+       
+        {% if data['fullnamedeceased'] or data['dod-day-deceased'] or data['nationalinsurancenumber-deceased'] %}
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/v3/save/task-list-restart-section" aria-describedby="company-details-3-hint company-details-3-status">
+              About the person who died
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-1-status">
+            Completed
+          </div>
+        </li>
+        {% else %}
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/v3/details/about-the-deceased" aria-describedby="company-details-3-hint company-details-3-status">
+              About the person who died
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-3-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              To do
+            </strong>
+          </div>
+        </li>
+        {% endif %}
+
+        {% if data['ifm'] == 'none' %}
+        {% else %}
+          {% if data['relationshipbrokendownc1'] or data['relationshipbrokendown'] %}
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <div class="govuk-task-list__name-and-hint">
+              <a class="govuk-link govuk-task-list__link" href="/v3/save/task-list-restart-section" aria-describedby="company-details-3-hint company-details-3-status">
+                About any other relatives
+              </a>
+            </div>
+            <div class="govuk-task-list__status" id="company-details-1-status">
+              Completed
+            </div>
+          </li>
+          {% else %}
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <div class="govuk-task-list__name-and-hint">
+              {% if data['ifm'] == "child" %}
+              <a class="govuk-link govuk-task-list__link" href="/v3/ifm/child/about-a-child" aria-describedby="company-details-3-hint company-details-3-status">
+                About any other relatives
+              </a>
+              {% elif data['ifm'] == "parent" %}
+              <a class="govuk-link govuk-task-list__link" href="/v3/ifm/parent/about-a-parent" aria-describedby="company-details-3-hint company-details-3-status">
+                About any other relatives
+              </a>
+              {% else %}
+              <a class="govuk-link govuk-task-list__link" href="/v3/ifm/parent/about-a-parent" aria-describedby="company-details-3-hint company-details-3-status">
+                About any other relatives
+              </a>
+              {% endif %}
+            </div>
+            <div class="govuk-task-list__status" id="company-details-3-status">
+              <strong class="govuk-tag govuk-tag--blue">
+                To do
+              </strong>
+            </div>
+          </li>
+          {% endif %}
+        {% endif %}
+        
+        {% if data['financialaffairs'] %}
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/v3/save/task-list-restart-money" aria-describedby="company-details-4-status">
+              About any money left by the person who died
+            </a>
+            <div id="company-details-3-hint" class="govuk-task-list__hint">
+              Bank accounts, life insurance policies and pensions
+            </div>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-1-status">
+            Completed
+          </div>
+        </li>
+        {% else %}
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/v3/money/financial-affairs" aria-describedby="company-details-4-status">
+              About any money left by the person who died
+            </a>
+            <div id="company-details-3-hint" class="govuk-task-list__hint">
+              Bank accounts, life insurance policies and pensions
+          </div>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-4-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              To do
+            </strong>
+          </div>
+        </li>
+        {% endif %}
+        
+        {% if data['claimtravel'] %}
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/v3/save/task-list-restart-section" aria-describedby="company-details-5-status">
+              About the funeral
+            </a>
+            <div id="company-details-3-hint" class="govuk-task-list__hint">
+              Who is arranging the funeral and any costs you've had to pay
+            </div>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-1-status">
+            Completed
+          </div>
+        </li>
+        {% else %}
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/v3/funeral/arranging-funeral" aria-describedby="company-details-5-status">
+              About the funeral
+            </a>
+            <div id="company-details-3-hint" class="govuk-task-list__hint">
+              Who is arranging the funeral and any costs you've had to pay
+            </div>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-5-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              To do
+            </strong>
+          </div>
+        </li>
+        {% endif %}
+
+        {% if data['nameOnTheAccount'] or data['sortCode'] %}
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/v3/save/task-list-restart-section" aria-describedby="company-details-5-status">
+              Your bank details
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-1-status">
+            Completed
+          </div>
+        </li>
+        {% else %}
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/v3/contact/bank-details" aria-describedby="company-details-5-status">
+              Your bank details
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-5-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              To do
+            </strong>
+          </div>
+        </li>
+        {% endif %}
+
+        {% if data['telephoneNumber'] or datadata['alternative'] %}
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/v3/save/task-list-restart-section" aria-describedby="company-details-5-status">
+              Your contact details
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-1-status">
+            Completed
+          </div>
+        </li>
+        {% else %}
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/v3/contact/phone" aria-describedby="company-details-5-status">
+              Your contact details
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-5-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              To do
+            </strong>
+          </div>
+        </li>
+        {% endif %}
+
+        {% if 
+        data['fullnameclaimant'] and 
+        data['fullnamedeceased'] and
+        data['financialaffairs'] and
+        data['claimtravel'] and
+        data['nameOnTheAccount'] or data['sortCode'] and
+        data['telephoneNumber']
+        %}
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="/v3/contact/declaration" aria-describedby="company-details-5-status">
+              Submit you application
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-5-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              To do
+            </strong>
+          </div>
+        </li>
+        {% else %}
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <div class="govuk-task-list__name-and-hint">
+                Submit your application
+            </div>
+            <div class="govuk-task-list__status" id="company-details-5-status">
+                Cannot start yet
+            </div>
+        </li>
+        {% endif %}
+
+      </ul>
+
+       {{ govukButton({
+          text: "Save and sign out",
+          href: "/v3/save/sign-out"
+        }) }}
+
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-7">
+        Get help with your application
+      </h2>
+
+    <p class="govuk-body">
+      Telephone: 0800 731 0468
+      <br/> Welsh language: 0800 731 0453
+    </p>
+
+    <p class="govuk-body">
+      Textphone: 0800 731 0317
+      <br/> Welsh language: 0800 731 0456
+    </p>
+
+    <p class="govuk-body">
+      If you cannot hear or speak on the phone use<br>
+      <a href='https://www.relayuk.bt.com' class="govuk-link">
+        Relay UK (opens in new tab)</a>: 18001 then 0800 731 0469
+    </p>
+
+    <p class="govuk-body">
+      Monday to Friday, 9:30am to 3:30pm
+    </p>
+
+    <p class="govuk-body">
+      <a href='https://www.gov.uk/call-charges' class="govuk-link">
+        Find out about call charges (opens in new tab)
+      </a>
+    </p>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+
+
+
+ 
+

@@ -1,0 +1,90 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Have you already started an application – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/v3/save/save-and-return-information" method="post">
+
+        <h1 class="govuk-heading-l">
+          Save your progress and come back later
+        </h1>
+
+        <p class="govuk-body">
+          Your progress will be saved as you complete each section of the application. You can return to
+          it later using your application reference.
+        </p>
+
+        <h2 class="govuk-heading-m">
+          Your application reference is:
+        </h2>
+
+        <div class="govuk-inset-text">
+          <span class="govuk-caption-xl">
+            FEJ OIY
+          </span>
+        </div>
+
+        {# <div class="govuk-inset-text">
+          {% if data.relationshiptodeceased == "partner" %}
+          <span class="govuk-caption-xl">
+            FEJ OIY
+          </span>
+          {% elif data.relationshiptodeceased == "crofdeceased" %}
+          <span class="govuk-caption-xl">
+            WLP XXD
+          </span>
+          {% else %}
+          <span class="govuk-caption-xl">
+            QCT RVL
+          </span>
+          {% endif %}
+        </div> #}
+
+        <h2 class="govuk-heading-m">
+          Get your reference by email or text
+        </h2>
+        
+        <p class="govuk-body">
+          We can send you your application reference so you do not lose it.
+        </p>
+
+        <div class="govuk-form-group">
+          <h3 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--s" for="mobilePhone">
+              Mobile number (optional)
+            </label>
+          </h3>
+          <input class="govuk-input govuk-input--width-10" id="mobilePhone" name="mobilePhone" type="text">
+        </div>
+        <div class="govuk-form-group">
+          <h3 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--s" for="emailAddress">
+              Email address (optional)
+            </label>
+          </h3>
+          <input class="govuk-input govuk-input--width-20" id="emailAddress" name="emailAddress" type="text">
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
