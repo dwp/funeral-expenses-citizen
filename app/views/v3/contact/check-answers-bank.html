@@ -27,10 +27,6 @@
 
         <h1 class="govuk-heading-l">Check your bank details</h1>
 
-        <p class="govuk-body">
-          Once you save your answers you cannot check them again. You can restart the section if you need to make any changes.
-        </p>
-
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -81,8 +77,11 @@
             </dd>
           </div>
           {% endif %}
+        </dl>
 
-          </dl>
+        <p class="govuk-body">
+          Once you save your answers you cannot check them again. You can restart the section if you need to make any changes.
+        </p>
 
         {{ govukButton({
           text: "Save and continue"

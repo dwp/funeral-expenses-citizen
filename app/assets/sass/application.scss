@@ -4,3 +4,10 @@
 // 
 
 // Add extra styles here
+
+
+$govuk-suppressed-warnings: (
+  "legacy-colour-param": true,
+  "govuk-typography-scale-14": true
+);
+
