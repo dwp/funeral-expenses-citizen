@@ -123,6 +123,7 @@
                       <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence type</span></a>
                     </dd>
                   </div>
+                  
                   {% if data['jointaccount'] == "some" %}
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
@@ -279,6 +280,7 @@
                     </dd>
                   </div>
                   {% endif %}
+                {% endif %}
 
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
@@ -381,7 +383,7 @@
                   {% endif %}
                 </dl>
 
-                <h2 class="govuk-heading-m">Armed forces funeral grant</h2>
+              <h2 class="govuk-heading-m">Armed forces funeral grant</h2>
                 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
@@ -397,7 +399,7 @@
                       <a class="govuk-link" href="#">Change</a>
                     </dd>
                   </div>
-                  {% if (data['armedforces'] == "yes") %}
+                  {% if (data['warpension']) %}
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
                       Claiming War Pension Funeral Grant
@@ -432,8 +434,8 @@
                     </dd>
                   </div>
                   {% endif %}
-                {% endif %}
               </dl>
+                
 
               <h2 class="govuk-heading-m">Burial club or society</h2>
               <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -513,7 +515,7 @@
               <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
-                    Did you need any extra death certificates to release money from the person who died?
+                    Additional death certificates
                   </dt>
                   {% if data['death-certificates'] == "yes" %}
                   <dd class="govuk-summary-list__value">
